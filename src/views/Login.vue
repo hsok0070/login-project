@@ -25,7 +25,6 @@
                 >
                 버튼
                 </v-btn>
-                <ion-icon name="logo-vimeo"></ion-icon>
                 </div>
             </v-card>
         </v-col>
