@@ -25,6 +25,8 @@
                 >
                 버튼
                 </v-btn>
+                <v-btn @click="test">get</v-btn>
+                <v-btn @click="post">post</v-btn>
                 </div>
             </v-card>
         </v-col>
@@ -36,6 +38,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import axios from 'axios'
 
 export default {
     data(){
@@ -49,7 +52,37 @@ export default {
 
     },
     methods: {
-        ...mapActions(['login'])
+        ...mapActions(['login']),
+
+        test(){
+
+            // Make a request for a user with a given ID
+            axios.get('https://reqres.in/api/?page=2')
+            .then(res => {
+                // handle success
+                console.log(res);
+            })
+            .catch(err => {
+                // handle error
+                console.log(err);
+            })
+            .finally(() => {
+                console.log('asd');
+                // always executed
+            });
+        },
+        post(){
+            axios.post('https://reqres.in/api/register', {
+            email: "eve.holt@reqres.in",
+            password: "pistol"
+        })
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+        }
         // login(){
             // 전체 유저에서 해당 이메일로 유저를 찾는다.
             /* let selectedUser = null
